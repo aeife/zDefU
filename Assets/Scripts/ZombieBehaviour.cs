@@ -32,16 +32,12 @@ public class ZombieBehaviour : MonoBehaviour {
 	void attack (){
 		soldiers = GameObject.FindGameObjectsWithTag ("Soldier");
 		foreach (GameObject soldier in soldiers) {
-			Debug.Log ("looping");
 			float distance = Vector3.Distance(transform.position, soldier.transform.position);
-			Debug.Log(distance);
 			if (distance < minDistance) {
-				Debug.Log ("got new nearest");
 				minDistance = distance;
 				nearestSoldier = soldier;
 			}
 		}
-		Debug.Log (nearestSoldier);
 		agent.SetDestination(Camera.main.ScreenToWorldPoint(nearestSoldier.transform.position));
 	}
 }
