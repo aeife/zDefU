@@ -1,26 +1,40 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class MoveToMouseXY : MonoBehaviour {
-
-	public float speed = 1.5f;
-	private Vector2 target;
-	private bool selected = false;
-
-	// Use this for initialization
-	void Start () {
-		target = transform.position;
+[RequireComponent(typeof(PolyNavAgent))]
+public class MoveToMouseXY : MonoBehaviour{
+	
+	private PolyNavAgent _agent;
+	public bool selected = false;
+	
+	public PolyNavAgent agent{
+		get
+		{
+			if (!_agent)
+				_agent = GetComponent(typeof(PolyNavAgent)) as PolyNavAgent;
+			return _agent;			
+		}
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		if (Input.GetMouseButtonDown (0) && selected) {
-			target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-		}
-		transform.position = Vector2.MoveTowards (transform.position, target, speed * Time.deltaTime);
+	private void Update () {
+		// only move if selected
+		if (selected && Input.GetMouseButtonDown(0))
+			agent.SetDestination(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+	}
+	
+	//Message from Agent
+	private void OnDestinationReached(){
+		
+		//do something here...
+	}
+	
+	//Message from Agent
+	private void OnDestinationInvalid(){
+		
+		//do something here...
 	}
 
-	void OnMouseDown() {
-		selected = !selected;
+	void OnMouseDown () {
+		MouseActions mouseActions = GameObject.Find ("MouseActions").GetComponent (typeof(MouseActions)) as MouseActions;
+		mouseActions.toggleSoldierSelection (gameObject);
 	}
 }

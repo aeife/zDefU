@@ -59,6 +59,6 @@ public class SoldierBehaviour : MonoBehaviour {
 			newBullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 			newBullet.rigidbody2D.AddForce(newBullet.transform.up * bulletSpeed);
 		}
-
 	}
+
 }
