@@ -22,6 +22,13 @@ public class HealthManagement : MonoBehaviour {
 		}
 	}
 
+	void OnCollisionEnter2D (Collision2D other) {
+		// zombie kills soldier on collision instantly
+		if (gameObject.tag == "Soldier" && other.gameObject.tag == "Zombie") {
+			takeDamage(100);
+		}
+	}
+
 	void takeDamage (int damage) {
 		health -= damage;
 		if (health <= 0) {

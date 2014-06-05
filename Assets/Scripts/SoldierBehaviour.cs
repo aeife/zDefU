@@ -19,7 +19,7 @@ public class SoldierBehaviour : MonoBehaviour {
 	void Update () {
 		cooldown -= Time.deltaTime;
 		if (canShoot()) {
-			attack(getNearestVisibleZombie ());
+//			attack(getNearestVisibleZombie ());
 			cooldown = fireRate;
 		}
 	}
@@ -38,8 +38,8 @@ public class SoldierBehaviour : MonoBehaviour {
 			float distance = Vector3.Distance(transform.position, zombie.transform.position);
 			RaycastHit2D[] hits = null;
 			hits =	Physics2D.LinecastAll(transform.position, zombie.transform.position);
-			Debug.DrawLine(transform.position, zombie.transform.position);
-			Debug.Log(hits.Length);
+//			Debug.DrawLine(transform.position, zombie.transform.position);
+//			Debug.Log(hits.Length);
 			if (distance < minDistance && hits.Length <= 3) {
 //				Debug.Log("SETTING");
 				minDistance = distance;
