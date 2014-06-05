@@ -3,7 +3,7 @@ using System.Collections;
 
 public class SoldierBehaviour : MonoBehaviour {
 	public float fireRate = 1.5f;
-	public Rigidbody2D bullet;
+	public GameObject bullet;
 	public float bulletSpeed = 1f;
 
 	private float cooldown = 0;
@@ -49,11 +49,12 @@ public class SoldierBehaviour : MonoBehaviour {
 	}
 
 	void attack (GameObject nearestZombie) {
-//		Debug.Log ("shoot");
-//		Debug.Log (nearestZombie);
 		if (nearestZombie != null) {
-			Rigidbody2D newBullet = Instantiate(bullet, transform.position, transform.rotation) as Rigidbody2D;
-			newBullet.velocity = transform.TransformDirection(nearestZombie.transform.position);
+			GameObject newBullet = Instantiate(bullet, transform.position, transform.rotation) as GameObject;
+			Vector3 dir = nearestZombie.transform.position - newBullet.transform.position;
+			float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg -90;
+			newBullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+			newBullet.rigidbody2D.AddForce(newBullet.transform.up * bulletSpeed);
 		}
 
 	}
