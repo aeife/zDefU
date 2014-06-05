@@ -29,21 +29,25 @@ public class SoldierBehaviour : MonoBehaviour {
 	}
 	
 	GameObject getNearestVisibleZombie () {
-		float minDistance = float.MaxValue;
-		zombies = GameObject.FindGameObjectsWithTag ("Zombie");
+		// check radius for objects, then check if nearest visible
 		GameObject nearestZombie = null;
-		foreach (GameObject zombie in zombies) {
-			float distance = Vector3.Distance(transform.position, zombie.transform.position);
-			RaycastHit2D[] hits = null;
-			hits =	Physics2D.LinecastAll(transform.position, zombie.transform.position);
-//			Debug.DrawLine(transform.position, zombie.transform.position);
-//			Debug.Log(hits.Length);
-			if (distance < minDistance && hits.Length <= 3) {
-				minDistance = distance;
-				nearestZombie = zombie;
+		// max radius: 10 * 0.5
+		for (int i = 1; i <= 10; i++) {
+			float minDistance = float.MaxValue;
+			Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, i*0.5f);
+			foreach (Collider2D hitCollider in hitColliders) {
+				if (hitCollider.tag == "Zombie") {
+					float distance = Vector3.Distance(transform.position, hitCollider.transform.position);
+					RaycastHit2D[] hits = null;
+					hits =	Physics2D.LinecastAll(transform.position, hitCollider.transform.position);
+					if (distance < minDistance && hits.Length <= 3) {
+						minDistance = distance;
+						nearestZombie = hitCollider.gameObject;
+					}
+				}
+
 			}
 		}
-
 		return nearestZombie;
 	}
 
