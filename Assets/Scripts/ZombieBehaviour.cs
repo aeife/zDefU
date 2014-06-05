@@ -6,8 +6,6 @@ public class ZombieBehaviour : MonoBehaviour {
 	private PolyNavAgent _agent;
 
 	private GameObject[] soldiers;
-	private float minDistance = 99999;
-	private GameObject nearestSoldier;
 
 	public PolyNavAgent agent{
 		get
@@ -20,17 +18,25 @@ public class ZombieBehaviour : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		attack ();
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
-			agent.SetDestination(nearestSoldier.transform.position);
+		attack (getNearestSoldier());
+			
 	}
 
-	void attack (){
+	void attack (GameObject target){
+		if (target) {
+			agent.SetDestination(target.transform.position);
+		}
+	}
+
+	GameObject getNearestSoldier () {
+		float minDistance = float.MaxValue;
 		soldiers = GameObject.FindGameObjectsWithTag ("Soldier");
+		GameObject nearestSoldier = null;
 		foreach (GameObject soldier in soldiers) {
 			float distance = Vector3.Distance(transform.position, soldier.transform.position);
 			if (distance < minDistance) {
@@ -38,6 +44,7 @@ public class ZombieBehaviour : MonoBehaviour {
 				nearestSoldier = soldier;
 			}
 		}
-		agent.SetDestination(Camera.main.ScreenToWorldPoint(nearestSoldier.transform.position));
+
+		return nearestSoldier;
 	}
 }
