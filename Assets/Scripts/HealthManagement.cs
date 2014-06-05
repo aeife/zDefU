@@ -16,13 +16,16 @@ public class HealthManagement : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D other) {
 		if (other.tag == "Bullet") {
-			Debug.Log("GOT HIT");
 			BulletScript bullet = other.gameObject.GetComponent<BulletScript>();
+			takeDamage(bullet.damage);
+			Destroy(bullet.gameObject);
+		}
+	}
 
-			health -= bullet.damage;
-			if (health <= 0) {
-				Destroy(gameObject);
-			}
+	void takeDamage (int damage) {
+		health -= damage;
+		if (health <= 0) {
+			Destroy(gameObject);
 		}
 	}
 }
