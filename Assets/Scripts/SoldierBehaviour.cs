@@ -19,7 +19,7 @@ public class SoldierBehaviour : MonoBehaviour {
 	void Update () {
 		cooldown -= Time.deltaTime;
 		if (canShoot()) {
-//			attack(getNearestVisibleZombie ());
+			attack(getNearestVisibleZombie ());
 			cooldown = fireRate;
 		}
 	}
