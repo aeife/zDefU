@@ -50,9 +50,9 @@ public class MouseActions : MonoBehaviour {
 				// select all soldiers in rect, deselect all outside
 				if (rect.Contains(soldier.transform.position)) {
 					Debug.Log("CONTAINS");
-					moveScript.selected = true;
+					moveScript.setSelection(true);
 				} else {
-					moveScript.selected = false;
+					moveScript.setSelection(false);
 				}
 			}
 		}
@@ -65,10 +65,10 @@ public class MouseActions : MonoBehaviour {
 		foreach (GameObject soldier in selectedSoldiers) {
 			moveScript = soldier.GetComponent (typeof(MoveToMouseXY)) as MoveToMouseXY;
 			if (moveScript.selected) {
-				moveScript.selected = false;
+				moveScript.setSelection(false);
 			}
 		}
 		moveScript = clickedSoldier.GetComponent (typeof(MoveToMouseXY)) as MoveToMouseXY;
-		moveScript.selected = true;
+		moveScript.setSelection(true);
 	}
 }

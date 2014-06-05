@@ -5,6 +5,7 @@ public class MoveToMouseXY : MonoBehaviour{
 	
 	private PolyNavAgent _agent;
 	public bool selected = false;
+	public bool deselectAfterMove = false;
 	private Vector3 lastMouseDownPosition;
 
 	void start () {
@@ -30,7 +31,11 @@ public class MoveToMouseXY : MonoBehaviour{
 
 		// only move if selected and mouse was not dragged further than threshold since last mouseDown
 		if (selected && Input.GetMouseButtonUp(0) && (Vector3.Distance(lastMouseDownPosition, Input.mousePosition) < mouseActions.clickDragThreshold)) {
-			agent.SetDestination(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+			// check if only first select click and no move click
+			// TODO: handle better, distances very near
+			if (Vector3.Distance(Camera.main.ScreenToWorldPoint(Input.mousePosition), gameObject.transform.position) > 10.1f) {
+				MoveTo (Input.mousePosition);
+			}
 		}
 	}
 	
@@ -38,6 +43,13 @@ public class MoveToMouseXY : MonoBehaviour{
 	private void OnDestinationReached(){
 		
 		//do something here...
+	}
+
+	void MoveTo (Vector3 targetPosition) {
+		agent.SetDestination(Camera.main.ScreenToWorldPoint(targetPosition));
+		if (deselectAfterMove) {
+			setSelection(false);
+		}
 	}
 	
 	//Message from Agent
@@ -49,5 +61,15 @@ public class MoveToMouseXY : MonoBehaviour{
 	void OnMouseDown () {
 		MouseActions mouseActions = GameObject.Find ("MouseActions").GetComponent (typeof(MouseActions)) as MouseActions;
 		mouseActions.toggleSoldierSelection (gameObject);
+	}
+
+	// handle change of selection
+	public void setSelection (bool value) {
+		selected = value;
+		if (selected) {
+			GetComponent<SpriteRenderer>().color = Color.gray;
+		} else {
+			GetComponent<SpriteRenderer>().color = Color.white;
+		}
 	}
 }

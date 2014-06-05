@@ -57,5 +57,4 @@ public class SoldierBehaviour : MonoBehaviour {
 			newBullet.rigidbody2D.AddForce(newBullet.transform.up * bulletSpeed);
 		}
 	}
-
 }

@@ -403,7 +403,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4c2a643575ba6485ea49af15ef7be7f4, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 4c2a643575ba6485ea49af15ef7be7f4, type: 2}
+      propertyPath: deselectAfterMove
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4c2a643575ba6485ea49af15ef7be7f4, type: 2}
@@ -2004,6 +2008,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selected: 0
+  deselectAfterMove: 0
 --- !u!50 &1409903342
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -2368,6 +2373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selected: 0
+  deselectAfterMove: 0
 --- !u!50 &1900881899
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -2705,6 +2711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selected: 0
+  deselectAfterMove: 1
 --- !u!50 &1957098070
 Rigidbody2D:
   m_ObjectHideFlags: 0
