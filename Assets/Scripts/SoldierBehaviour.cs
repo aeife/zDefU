@@ -5,6 +5,7 @@ public class SoldierBehaviour : MonoBehaviour {
 	public float fireRate = 1.5f;
 	public GameObject bullet;
 	public float bulletSpeed = 1f;
+//	public int bulletDamage = 10;
 
 	private float cooldown = 0;
 	private GameObject[] zombies;
@@ -37,7 +38,8 @@ public class SoldierBehaviour : MonoBehaviour {
 			float distance = Vector3.Distance(transform.position, zombie.transform.position);
 			RaycastHit2D[] hits = null;
 			hits =	Physics2D.LinecastAll(transform.position, zombie.transform.position);
-
+			Debug.DrawLine(transform.position, zombie.transform.position);
+			Debug.Log(hits.Length);
 			if (distance < minDistance && hits.Length <= 3) {
 //				Debug.Log("SETTING");
 				minDistance = distance;
@@ -50,6 +52,7 @@ public class SoldierBehaviour : MonoBehaviour {
 
 	void attack (GameObject nearestZombie) {
 		if (nearestZombie != null) {
+//			Debug.Log("SHOOT");
 			GameObject newBullet = Instantiate(bullet, transform.position, transform.rotation) as GameObject;
 			Vector3 dir = nearestZombie.transform.position - newBullet.transform.position;
 			float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg -90;
