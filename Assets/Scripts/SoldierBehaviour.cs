@@ -27,12 +27,10 @@ public class SoldierBehaviour : MonoBehaviour {
 	bool canShoot () {
 		return (cooldown <= 0);
 	}
-
+	
 	GameObject getNearestVisibleZombie () {
-//		Debug.Log("get NEAREST");
-		float minDistance = 9999;
+		float minDistance = float.MaxValue;
 		zombies = GameObject.FindGameObjectsWithTag ("Zombie");
-//		Debug.Log(zombies.Length);
 		GameObject nearestZombie = null;
 		foreach (GameObject zombie in zombies) {
 			float distance = Vector3.Distance(transform.position, zombie.transform.position);
@@ -41,7 +39,6 @@ public class SoldierBehaviour : MonoBehaviour {
 //			Debug.DrawLine(transform.position, zombie.transform.position);
 //			Debug.Log(hits.Length);
 			if (distance < minDistance && hits.Length <= 3) {
-//				Debug.Log("SETTING");
 				minDistance = distance;
 				nearestZombie = zombie;
 			}
@@ -50,9 +47,9 @@ public class SoldierBehaviour : MonoBehaviour {
 		return nearestZombie;
 	}
 
+	// if nearest zombie is available shoot in his direction
 	void attack (GameObject nearestZombie) {
 		if (nearestZombie != null) {
-//			Debug.Log("SHOOT");
 			GameObject newBullet = Instantiate(bullet, transform.position, transform.rotation) as GameObject;
 			Vector3 dir = nearestZombie.transform.position - newBullet.transform.position;
 			float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg -90;
