@@ -33,9 +33,9 @@ public class MoveToMouseXY : MonoBehaviour{
 		if (selected && Input.GetMouseButtonUp(0) && (Vector3.Distance(lastMouseDownPosition, Input.mousePosition) < mouseActions.clickDragThreshold)) {
 			// check if only first select click and no move click
 			// TODO: handle better, distances very near
-			if (Vector3.Distance(Camera.main.ScreenToWorldPoint(Input.mousePosition), gameObject.transform.position) > 10.1f) {
+//			if (Vector3.Distance(Camera.main.ScreenToWorldPoint(Input.mousePosition), gameObject.transform.position) > 10.1f) {
 				MoveTo (Input.mousePosition);
-			}
+//			}
 		}
 	}
 	
@@ -47,9 +47,9 @@ public class MoveToMouseXY : MonoBehaviour{
 
 	void MoveTo (Vector3 targetPosition) {
 		agent.SetDestination(Camera.main.ScreenToWorldPoint(targetPosition));
-		if (deselectAfterMove) {
-			setSelection(false);
-		}
+//		if (deselectAfterMove) {
+//			setSelection(false);
+//		}
 	}
 	
 	//Message from Agent
