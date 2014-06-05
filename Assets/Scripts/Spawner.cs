@@ -13,6 +13,8 @@ public class Spawner : MonoBehaviour {
 	}
 
 	void Spawn () {
-		Instantiate (zombie, transform.position, transform.rotation);
+		Debug.Log(gameObject.collider2D.bounds.min.x);
+
+		Instantiate (zombie, new Vector3(Random.Range(gameObject.collider2D.bounds.min.x, gameObject.collider2D.bounds.max.x), Random.Range(gameObject.collider2D.bounds.min.y, gameObject.collider2D.bounds.max.y), gameObject.transform.position.z), transform.rotation);
 	}
 }

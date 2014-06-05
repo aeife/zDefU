@@ -107,7 +107,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 109350375}
-  m_RootOrder: 3
+  m_RootOrder: 0
 --- !u!114 &27912298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,12 +314,12 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1957098063}
-  - {fileID: 1153334516}
-  - {fileID: 1816636015}
   - {fileID: 27912297}
   - {fileID: 1900881902}
   - {fileID: 1409903335}
+  - {fileID: 1957098063}
+  - {fileID: 1153334516}
+  - {fileID: 1816636015}
   m_Father: {fileID: 1992883300}
   m_RootOrder: 2
 --- !u!1 &117997948
@@ -1402,7 +1402,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 109350375}
-  m_RootOrder: 1
+  m_RootOrder: 4
 --- !u!114 &1153334517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1924,7 +1924,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 109350375}
-  m_RootOrder: 5
+  m_RootOrder: 2
 --- !u!114 &1409903336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2072,6 +2072,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1743715332}
   - 114: {fileID: 1743715331}
+  - 61: {fileID: 1743715333}
   m_Layer: 0
   m_Name: Spawner1
   m_TagString: Untagged
@@ -2100,11 +2101,22 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1743715330}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .148020387, y: 7.31339359, z: 5.08862305}
+  m_LocalPosition: {x: .621277392, y: 6.7536912, z: 5.08862305}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!61 &1743715333
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1743715330}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: 5, y: 2}
+  m_Center: {x: 0, y: 0}
 --- !u!1001 &1806388752
 Prefab:
   m_ObjectHideFlags: 0
@@ -2292,7 +2304,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 109350375}
-  m_RootOrder: 2
+  m_RootOrder: 5
 --- !u!114 &1816636016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2478,7 +2490,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 109350375}
-  m_RootOrder: 4
+  m_RootOrder: 1
 --- !u!114 &1900881904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2669,7 +2681,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 109350375}
-  m_RootOrder: 0
+  m_RootOrder: 3
 --- !u!114 &1957098064
 MonoBehaviour:
   m_ObjectHideFlags: 0
