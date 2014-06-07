@@ -41,22 +41,26 @@ public class Movement : MonoBehaviour {
 		}
 		
 		if (currentWaypoint >= path.vectorPath.Count) {
-			//			Debug.Log ("End Of Path Reached");
+						Debug.Log ("End Of Path Reached");
+			moving = false;
 			return;
 		}
 
 
 		//Direction to the next waypoint
-		Vector3 dir = (path.vectorPath[currentWaypoint]-transform.position).normalized;
-		dir *= moveSpeed * Time.fixedDeltaTime;
-		// move to direction
-		controller.Move (dir);
-		//Check if we are close enough to the next waypoint
-		//If we are, proceed to follow the next waypoint
-		if (Vector3.Distance (transform.position,path.vectorPath[currentWaypoint]) < nextWaypointDistance) {
-			currentWaypoint++;
-			return;
+		if (moving) {
+			Vector3 dir = (path.vectorPath[currentWaypoint]-transform.position).normalized;
+			dir *= moveSpeed * Time.fixedDeltaTime;
+			// move to direction
+			controller.Move (dir);
+			//Check if we are close enough to the next waypoint
+			//If we are, proceed to follow the next waypoint
+			if (Vector3.Distance (transform.position,path.vectorPath[currentWaypoint]) < nextWaypointDistance) {
+				currentWaypoint++;
+				return;
+			}
 		}
+
 
 
 	}
