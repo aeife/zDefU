@@ -27,7 +27,7 @@ public class ZombieBehaviour : MonoBehaviour {
 	}
 
 	void attack (GameObject target){
-		if (Vector3.Distance (lastTargetPosition, target.transform.position) < 1) {
+		if (Vector3.Distance (lastTargetPosition, target.transform.position) < 3) {
 			return;
 		}
 		if (target) {
