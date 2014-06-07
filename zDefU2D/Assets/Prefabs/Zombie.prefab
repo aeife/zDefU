@@ -9,16 +9,15 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 212: {fileID: 21200000}
-  - 50: {fileID: 5000000}
-  - 114: {fileID: 11400000}
-  - 195: {fileID: 19500000}
-  - 114: {fileID: 11400004}
   - 58: {fileID: 5800000}
-  - 114: {fileID: 11400006}
-  - 114: {fileID: 11400008}
+  - 50: {fileID: 5000000}
+  - 195: {fileID: 19500000}
+  - 114: {fileID: 11400002}
+  - 114: {fileID: 11400000}
+  - 114: {fileID: 11400004}
   m_Layer: 0
-  m_Name: Soldier
-  m_TagString: Soldier
+  m_Name: Zombie
+  m_TagString: Zombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +29,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.00553322, y: -1.87009895, z: 0}
+  m_LocalPosition: {x: 1.52260637, y: 6.32323837, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -69,11 +68,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a686ba9a4d0e4945a856be162b8418a, type: 3}
+  m_Script: {fileID: 11500000, guid: 2fe8270a20b7b4f57ac01ed0715cb041, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selected: 0
---- !u!114 &11400004
+--- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -84,7 +82,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93cc6a4987f7c684798156c56d545838, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 3.5
+  maxSpeed: 1.5
   mass: 20
   stoppingDistance: .100000001
   slowingDistance: 1
@@ -94,21 +92,7 @@ MonoBehaviour:
   rotateSpeed: 350
   sendMessages: 1
   debugPath: 1
---- !u!114 &11400006
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2042eea7b17734d66a1964e60bd64a3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fireRate: .5
-  bullet: {fileID: 100000, guid: 5f9fd3bebe64b43fb99db9ebaeb83bea, type: 2}
-  bulletSpeed: 999
---- !u!114 &11400008
+--- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -120,8 +104,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  onDeathReplaceWith: {fileID: 100000, guid: 2b0adcf6a2b8a430082f52fae1c814ac, type: 2}
-  canBeHitByBullets: 0
+  onDeathReplaceWith: {fileID: 0}
+  canBeHitByBullets: 1
 --- !u!195 &19500000
 NavMeshAgent:
   m_ObjectHideFlags: 1
@@ -154,7 +138,7 @@ SpriteRenderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: 60fd9610d2f6b4eb2a491bbba7709abc, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -162,7 +146,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6245ede383e664b8e8d8c9a220013ac1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2b887e74c5d4b4d0399402ec2a1358c1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
